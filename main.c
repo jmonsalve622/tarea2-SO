@@ -54,7 +54,37 @@ void* work(void *arg) {
 	}
 }
 
+int validInput(int argc, const char** args) {
+	int result = 1;
+	for (int i = 1; i < argc; i++) {
+		int n = atoi(args[i]);
+		if (n <= 0)
+			result *= 0;
+		else
+			result *= 1;
+	}
+	return result;
+}
+
 int main(int argc, char const *argv[]) {
+	if(validInput(argc, argv)) {
+		if (argc == 3) {
+			N = atoi(argv[1]);
+			E = atoi(argv[2]);
+		}
+		else if (argc == 2) {
+			N = atoi(argv[1]);
+		}
+		else if (argc > 3) {
+			printf("Exceso de argumentos, fin del programa\n");
+			return 1;
+		}
+	}
+	else {
+		printf("Argumentos invalidos, deben ser números enteros positivos\n");
+		return 1;
+	}
+
 	pthread_t threads[N];
 	barrier_init(&barrier, N);
 
