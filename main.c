@@ -47,7 +47,8 @@ barrier_t barrier;
 void* work(void *arg) {
 	int id = (int)(size_t)arg;
 	for (int i = 0; i < E; i++) {
-		usleep(100000);
+		// El rango de tiempo de trabajo varia entre 0.2s a 0.8s
+		usleep(rand() % 600000 + 200000);
 		printf("tid %d esperando en etapa %d\n", id, barrier.etapa);
 		barrier_wait(&barrier);
 		printf("tid %d paso barrera en etapa %d\n", id, barrier.etapa - 1);
@@ -67,6 +68,8 @@ int validInput(int argc, const char** args) {
 }
 
 int main(int argc, char const *argv[]) {
+	srand(time(NULL));
+
 	if(validInput(argc, argv)) {
 		if (argc == 3) {
 			N = atoi(argv[1]);
