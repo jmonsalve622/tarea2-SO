@@ -15,8 +15,8 @@ El programa se ejecuta con el siguiente formato:
 ```
 
 #### Argumentos:
-- `[num_hebras]`: Números de hebras que se van a utilizar. Si no se declara, su valor será 5.
-- `[num_etapas]`: Número de etapas en las que las hebras trabajarán. Si no se declara, su valor será 4.
+- `[num_hebras]`: Número entero positivo de hebras que se van a utilizar. Si no se declara, su valor será 5.
+- `[num_etapas]`: Número entero positivo de etapas en las que las hebras trabajarán. Si no se declara, su valor será 4.
 
 ## Parte II. Simulador simple de Memoria Virtual
 
